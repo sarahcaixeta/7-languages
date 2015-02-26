@@ -11,7 +11,7 @@ class Tree
     @node_name = options.keys.first
     @children = []
     hash = options[@node_name]
-    if !hash.empty?
+    unless hash.empty?
       hash.each_key do |key|
        @children << Tree.new(key => hash[key])
       end
