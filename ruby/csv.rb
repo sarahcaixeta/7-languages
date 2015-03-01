@@ -38,6 +38,12 @@ class CsvRow
     @headers = headers
     @row_content = row_content
   end
+
+  def method_missing name, *args, &block
+    header = name.to_s
+    @row_content[@headers.index(header)]
+  end
+
 end
 
 class RubyCsv
@@ -46,4 +52,4 @@ class RubyCsv
 end
 
 m = RubyCsv.new
-m.each { |row| puts row.inspect }
+m.each { |row| puts "#{row.one}, #{row.two}" }
