@@ -6,4 +6,9 @@ max := Dog clone
 max description println
 
 Dog bark := method("Au Au" println)
+
+"calling a method" println
 max bark
+
+"executing from slot" println
+max perform("bark")
