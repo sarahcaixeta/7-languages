@@ -15,6 +15,9 @@ Matrix dim := method(x, y,
 Matrix set := method(x, y, value,
   content at(x) atPut(y, value)
 )
+Matrix get := method(x, y,
+  content at(x) at(y)
+)
 Matrix print := method(
   for(i, 0, content size -1, content at(i) println)
 )
@@ -23,3 +26,4 @@ m dim(3, 5)
 m set(2, 3, "buu")
 m set(1, 1, "ahh")
 m print
+m get(2, 3) println
