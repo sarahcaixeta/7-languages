@@ -14,7 +14,13 @@ Matrix dim := method(x, y,
     content append(innerList)
   )
 )
-
+Matrix set := method(x, y, value,
+  content at(x) atPut(y, value)
+)
+Matrix print := method(
+  for(i, 0, content size -1, content at(i) println)
+)
 m := Matrix clone
 m dim(3, 5)
-m content println
+m set(2, 3, "buu")
+m print
