@@ -4,9 +4,9 @@
 # (Bonus: Raise an Io exception if any item in
 # the list is not a number.)
 
-myList := list(13, 15, 17, 10)
-myList myAverage := method(
-  return myList sum / myList size
-)
 
+List myAverage := method(
+  return self sum / self size
+)
+myList := list(13, 15, 17, 10)
 myList myAverage println
