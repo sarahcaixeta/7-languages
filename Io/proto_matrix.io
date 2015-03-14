@@ -3,14 +3,12 @@
 # a value, and get(x, y) should return that value.
 
 
-Matrix := Object clone
+Matrix := List clone
 Matrix content := List clone
 Matrix dim := method(x, y,
   for(i, 0, x - 1,
     innerList := List clone
-    for(j, 0, y - 1,
-      innerList append(nil)
-    )
+    innerList setSize(y)
     content append(innerList)
   )
 )
@@ -23,4 +21,5 @@ Matrix print := method(
 m := Matrix clone
 m dim(3, 5)
 m set(2, 3, "buu")
+m set(1, 1, "ahh")
 m print
