@@ -27,12 +27,17 @@ Matrix transpose := method(
   )
   return transposed
 )
-
-m := Matrix clone
+Matrix writeToFile := method(
+  f := File openForUpdating("matrix.txt")
+  f write(self serialized)
+  f close
+)
+Matrix readFromFile := method(
+  self = doFile("matrix.txt")
+  self setProto Matrix
+)
+m := Matrix readFromFile
 m dim(3, 5)
 m set(2, 3, "buu")
 m set(1, 1, "ahh")
 m print
-m get(2, 3) println
-t := m transpose
-t print
