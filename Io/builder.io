@@ -1,13 +1,16 @@
 Builder := Object clone
 
+Builder identation := 0
+
 Builder forward := method(
-  writeln("<", call message name, ">")
+  identationString := "    " repeated(self identation)
+  writeln(identationString, "<", call message name, ">")
   call message arguments foreach(
     arg,
     content := self doMessage(arg);
-    if(content type == "Sequence", writeln(content))
+    if(content type == "Sequence", writeln(("#{identationString} ") interpolate, content))
   )
-  writeln("</", call message name, ">")
+  writeln(identationString, "</", call message name, ">")
 )
 Builder ul(
   li("Io"),
