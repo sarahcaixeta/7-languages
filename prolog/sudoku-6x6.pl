@@ -15,7 +15,10 @@ sudoku(Puzzle, Solution) :-
   Row5 = [S51, S52, S53, S54, S55, S56],
   Row6 = [S61, S62, S63, S64, S65, S66],
 
-  valid([Row1, Row2, Row3, Row4, Row5, Row6]).
+  Col1 = [S11, S21, S31, S41, S51, S61],
+
+  valid([Row1, Row2, Row3, Row4, Row5, Row6,
+    Col1]).
 
 valid([]).
 valid([Head|Tail]) :-
