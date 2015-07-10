@@ -11,15 +11,8 @@ sudoku(Puzzle, Solution) :-
             S91, S92, S93, S94, S95, S96, S97, S98, S99],
   Puzzle ins 1..9,
 
-  Row1 = [S11, S12, S13, S14, S15, S16, S17, S18, S19],
-  Row2 = [S21, S22, S23, S24, S25, S26, S27, S28, S29],
-  Row3 = [S31, S32, S33, S34, S35, S36, S37, S38, S39],
-  Row4 = [S41, S42, S43, S44, S45, S46, S47, S48, S49],
-  Row5 = [S51, S52, S53, S54, S55, S56, S57, S58, S59],
-  Row6 = [S61, S62, S63, S64, S65, S66, S67, S68, S69],
-  Row7 = [S71, S72, S73, S74, S75, S76, S77, S78, S79],
-  Row8 = [S81, S82, S83, S84, S85, S86, S87, S88, S89],
-  Row9 = [S91, S92, S93, S94, S95, S96, S97, S98, S99],
+  width(Puzzle, Width),
+  rows(Puzzle, Width, Rows),
 
   Col1 = [S11, S21, S31, S41, S51, S61, S71, S81, S91],
   Col2 = [S12, S22, S32, S42, S52, S62, S72, S82, S92],
@@ -41,6 +34,7 @@ sudoku(Puzzle, Solution) :-
   Square8 = [S74, S75, S76, S84, S85, S86, S94, S95, S96],
   Square9 = [S77, S78, S79, S87, S88, S89, S97, S98, S99],
 
+
   valid([Row1, Row2, Row3, Row4, Row5, Row6, Row7, Row8, Row9,
     Col1, Col2, Col3, Col4, Col5, Col6, Col7, Col8, Col9,
     Square1, Square2, Square3, Square4, Square5, Square6, Square7, Square7, Square8, Square9]).
@@ -49,3 +43,15 @@ valid([]).
 valid([Head|Tail]) :-
   all_different(Head),
   valid(Tail).
+
+rows([], _, []).
+rows(List, Width, Rows) :-
+  split_at(Width, List, Row, Rest),
+  rows(Rest, Width, MoreRows),
+  append([Row], MoreRows, Rows).
+
+
+
+width(Puzzle, Width) :-
+  length(Puzzle, Length),
+  Width is round(sqrt(Length)).
