@@ -8,7 +8,7 @@
 			(operation (nth @accounts id) amount))))
 
 (defn credit [id amount]
-		(change-balance id + amount))
+	(change-balance id + amount))
 
 (defn debit [id amount]
-		(change-balance id - amount))
+	(change-balance id - amount))
